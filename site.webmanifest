@@ -1,0 +1,24 @@
+{
+  "name": "MasteryPath",
+  "short_name": "MasteryPath",
+  "description": "Harada Method goal chart builder for professionals. Learn. Build. Achieve.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e1b4b",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/favicon-32x32.png",    "sizes": "32x32",   "type": "image/png" },
+    { "src": "/favicon-16x16.png",    "sizes": "16x16",   "type": "image/png" }
+  ],
+  "categories": ["productivity", "education", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "MasteryPath Harada Chart Builder"
+    }
+  ]
+}
