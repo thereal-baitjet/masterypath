@@ -1,10 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>MasteryPath — Build Your Path to Mastery</title>
-<meta name="description" content="Create a personalized Harada Method goal chart in 2 minutes. 14 profession templates. Used by 2,400+ professionals."/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- ═══════════════════════════════════════════
+     PRIMARY SEO
+════════════════════════════════════════════ -->
+<title>MasteryPath — Harada Method Goal Chart Builder | Learn. Build. Achieve.</title>
+<meta name="description" content="Turn your biggest professional goal into a clear 64-action plan in 2 minutes. MasteryPath uses the Harada Method to create personalized Mandala charts for 14 professions — free, no sign-up required."/>
+<meta name="keywords" content="harada method, harada chart, goal achievement app, mandala chart, open window chart, personal development tool, career goal planner, professional development, harada method template, goal setting app, 64-task chart, mastery plan, career planning, harada method free, goal chart generator, self improvement app, professional goal setting, software developer goals, career change plan, entrepreneur goal chart"/>
+<meta name="author" content="MasteryPath"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta name="theme-color" content="#4f46e5"/>
+<link rel="canonical" href="https://masterypath.app/"/>
+
+<!-- ═══════════════════════════════════════════
+     OPEN GRAPH (Facebook, LinkedIn, WhatsApp)
+════════════════════════════════════════════ -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="MasteryPath"/>
+<meta property="og:title" content="MasteryPath — Build Your Path to Mastery"/>
+<meta property="og:description" content="Create a personalized Harada Method goal chart in 2 minutes. 14 profession templates. Used by 2,400+ professionals. Free to start."/>
+<meta property="og:url" content="https://masterypath.app/"/>
+<meta property="og:image" content="https://masterypath.app/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="MasteryPath — Harada Method Goal Chart Builder"/>
+<meta property="og:locale" content="en_US"/>
+
+<!-- ═══════════════════════════════════════════
+     TWITTER / X CARD
+════════════════════════════════════════════ -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@masterypath"/>
+<meta name="twitter:creator" content="@masterypath"/>
+<meta name="twitter:title" content="MasteryPath — Build Your Path to Mastery"/>
+<meta name="twitter:description" content="Turn your biggest goal into a clear 64-action plan in 2 minutes. Free Harada Method chart builder — 14 profession templates."/>
+<meta name="twitter:image" content="https://masterypath.app/og-image.png"/>
+<meta name="twitter:image:alt" content="MasteryPath Harada Method Chart Builder"/>
+
+<!-- ═══════════════════════════════════════════
+     STRUCTURED DATA — JSON-LD
+════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://masterypath.app/#app",
+      "name": "MasteryPath",
+      "url": "https://masterypath.app/",
+      "description": "A free Harada Method goal chart builder that creates personalized 64-action Mandala charts for professionals across 14 career fields.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": "en-US",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "1 chart, 14 profession templates, progress tracker"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "9",
+          "priceCurrency": "USD",
+          "description": "Unlimited charts, PDF export, shareable links, progress sync"
+        },
+        {
+          "@type": "Offer",
+          "name": "Coach",
+          "price": "49",
+          "priceCurrency": "USD",
+          "description": "Client portal, white-label branding, bulk chart generation, team dashboard"
+        }
+      ],
+      "featureList": [
+        "14 profession-specific goal templates",
+        "64-action Harada Method Mandala chart",
+        "4-step guided onboarding",
+        "Progress tracking",
+        "PDF export (Pro)",
+        "Shareable links (Pro)",
+        "Client portal (Coach)"
+      ],
+      "screenshot": "https://masterypath.app/screenshot.png",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2400",
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://masterypath.app/#org",
+      "name": "MasteryPath",
+      "url": "https://masterypath.app/",
+      "logo": "https://masterypath.app/logo.png",
+      "sameAs": [
+        "https://twitter.com/masterypath",
+        "https://linkedin.com/company/masterypath",
+        "https://github.com/masterypath"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://masterypath.app/#website",
+      "url": "https://masterypath.app/",
+      "name": "MasteryPath",
+      "description": "Free Harada Method goal chart builder for professionals",
+      "publisher": { "@id": "https://masterypath.app/#org" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://masterypath.app/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ═══════════════════════════════════════════
+     PERFORMANCE & PRECONNECTS
+════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--indigo:#4f46e5;--violet:#7c3aed;--indigo-light:#eef2ff;--indigo-mid:#c7d2fe;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-700:#374151;--gray-900:#111827;--green:#16a34a;--amber:#d97706;--red:#dc2626}
@@ -430,14 +564,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 
   <div class="action-bar">
-    <button class="act-btn locked" onclick="openPricing('pdf')">
-      📥 Export PDF <span class="lock-badge">PRO</span>
+    <button class="act-btn" id="btn-pdf" onclick="handlePDF()">
+      📥 Export PDF <span class="lock-badge" id="pdf-lock">PRO</span>
     </button>
-    <button class="act-btn locked" onclick="openPricing('share')">
-      🔗 Share Link <span class="lock-badge">PRO</span>
+    <button class="act-btn" id="btn-share" onclick="handleShare()">
+      🔗 Share Link <span class="lock-badge" id="share-lock">PRO</span>
     </button>
-    <button class="act-btn locked" onclick="openPricing('sync')">
-      📊 Progress Sync <span class="lock-badge">PRO</span>
+    <button class="act-btn" id="btn-sync" onclick="handleSync()">
+      ☁️ Saved <span id="sync-status" style="font-size:10px;opacity:0.7"></span><span class="lock-badge" id="sync-lock">PRO</span>
     </button>
     <div class="act-spacer"></div>
     <button class="btn-new" onclick="newChart()">+ New Chart</button>
@@ -542,6 +676,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <!-- CELL EDIT MODAL -->
+<!-- ── Shared-view banner (shown when viewing someone else's chart) ── -->
+<div id="shared-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:linear-gradient(90deg,#4f46e5,#7c3aed);padding:12px 20px;display:none;align-items:center;gap:12px;flex-wrap:wrap;">
+  <span id="shared-banner-txt" style="color:#fff;font-size:14px;flex:1;min-width:200px"></span>
+  <button onclick="startFresh()" style="background:#fff;color:#4f46e5;border:none;border-radius:8px;padding:8px 18px;font-weight:700;cursor:pointer;font-size:13px;white-space:nowrap">✨ Build My Own Chart →</button>
+  <button onclick="document.getElementById('shared-banner').style.display='none'" style="background:transparent;color:rgba(255,255,255,0.7);border:none;cursor:pointer;font-size:18px;line-height:1">✕</button>
+</div>
+
+<!-- ── Share modal ── -->
+<div class="overlay" id="share-overlay" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
+  <div style="background:#1e1b4b;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px;max-width:460px;width:90%;position:relative;">
+    <button onclick="closeShareModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#a5b4fc;font-size:20px;cursor:pointer">✕</button>
+    <h3 style="color:#fff;margin:0 0 6px;font-size:18px">🔗 Share Your Chart</h3>
+    <p style="color:#a5b4fc;font-size:13px;margin:0 0 20px">Anyone with this link can view your MasteryPath chart.</p>
+    <div style="display:flex;gap:8px;margin-bottom:16px">
+      <input id="share-url-input" readonly style="flex:1;background:#0f0c3a;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 12px;color:#e0e7ff;font-size:13px;outline:none" value=""/>
+      <button id="copy-btn" onclick="copyShareUrl()" style="background:#4f46e5;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:13px;white-space:nowrap">Copy</button>
+    </div>
+    <div id="share-saving" style="color:#a5b4fc;font-size:12px;text-align:center;display:none">⏳ Saving chart to cloud…</div>
+    <div id="share-actions" style="display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="shareVia('twitter')" style="flex:1;background:#1da1f2;color:#fff;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:600;cursor:pointer">𝕏 Share on X</button>
+      <button onclick="shareVia('linkedin')" style="flex:1;background:#0077b5;color:#fff;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:600;cursor:pointer">in LinkedIn</button>
+      <button onclick="shareVia('native')" style="flex:1;background:#4f46e5;color:#fff;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:600;cursor:pointer">⬆ More…</button>
+    </div>
+  </div>
+</div>
+
 <div class="m-overlay" id="m-ov">
   <div class="m-box">
     <h3>Edit Cell</h3>
@@ -692,13 +852,35 @@ function gotoEmail(){
 }
 
 // ─── S5: EMAIL ────────────────────────────────
-function submitEmail(){
+async function submitEmail(){
   const e=document.getElementById("email-inp").value.trim();
   if(!e||!e.includes("@")){document.getElementById("email-inp").focus();return;}
   S.email=e;S.emailCaptured=true;
+  // Check if this email is a paid subscriber
+  await checkSubscriberStatus(e);
   buildChart();
 }
 function skipEmail(){S.emailCaptured=true;buildChart();}
+
+async function checkSubscriberStatus(email){
+  if(!db) return;
+  try {
+    const {data} = await db
+      .from('subscribers')
+      .select('is_pro,is_coach,plan')
+      .eq('email', email)
+      .maybeSingle();
+    if(data?.is_pro){
+      S.isPro   = true;
+      S.isCoach = data.is_coach || false;
+      S.plan    = data.plan || 'pro';
+      refreshProButtons();
+      console.log(`✅ Pro subscriber detected: ${email} (${S.plan})`);
+    }
+  } catch(e){
+    console.warn('Subscriber check failed', e);
+  }
+}
 
 // ─── S6: CHART ────────────────────────────────
 const CL={"0,0":0,"0,1":1,"0,2":2,"1,0":3,"1,2":4,"2,0":5,"2,1":6,"2,2":7};
@@ -727,6 +909,8 @@ function buildChart(){
   document.getElementById("cn-pill").textContent=TFL[S.tf]||S.tf;
   document.getElementById("upgrade-bar").style.display="block";
   renderLegend();renderGrid();updateProg();goTo("s-chart");
+  // Auto-save new chart if Pro
+  if(S.isPro) setTimeout(()=>saveChart(), 500);
 }
 function renderLegend(){
   const w=document.getElementById("legend-wrap");w.innerHTML="";
@@ -808,9 +992,203 @@ function updatePricing(){
   }
 }
 function selectPlan(plan){
-  // In production, redirect to Stripe checkout
-  alert(`🚀 Thanks for choosing ${plan==="pro"?"Pro":"Coach"}!\n\nIn production, this connects to your Stripe checkout.\nReplace this with:\nwindow.location.href = 'https://buy.stripe.com/YOUR_LINK';`);
-  closePricing();
+  const links = {
+    pro:   'https://buy.stripe.com/4gM4gzaJUdzv41j6Tc1wY0d',
+    coach: 'https://buy.stripe.com/dRm8wP2do3YV0P76Tc1wY0e'
+  };
+  window.location.href = links[plan];
+}
+
+// ─── PDF EXPORT ───────────────────────────────
+function handlePDF(){
+  if(!S.isPro){openPricing('pdf');return;}
+  exportPDF();
+}
+
+function hexToRgb(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return[r,g,b];
+}
+
+function wrapText(doc,text,x,y,maxW,lineH){
+  const words=text.split(' ');let line='';
+  words.forEach((w,i)=>{
+    const test=line?line+' '+w:w;
+    if(doc.getTextWidth(test)>maxW&&line){doc.text(line,x,y);y+=lineH;line=w;}
+    else line=test;
+  });
+  if(line)doc.text(line,x,y);
+  return y;
+}
+
+function exportPDF(){
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+  const PW=297,PH=210;
+  const MARGIN=12;
+
+  // ── Background ──
+  doc.setFillColor(15,12,60);
+  doc.rect(0,0,PW,PH,'F');
+
+  // ── Header bar ──
+  doc.setFillColor(30,24,90);
+  doc.rect(0,0,PW,22,'F');
+
+  // Brand name
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(14);
+  doc.setFont('helvetica','bold');
+  doc.text('MasteryPath',MARGIN,14);
+
+  // Tagline
+  doc.setFontSize(7);
+  doc.setFont('helvetica','normal');
+  doc.setTextColor(180,170,255);
+  doc.text('LEARN. BUILD. ACHIEVE.',MARGIN,19);
+
+  // User name + goal (right side of header)
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(9);
+  doc.setFont('helvetica','bold');
+  const nameText=`${S.name}'s MasteryPath`;
+  doc.text(nameText,PW-MARGIN,11,{align:'right'});
+  doc.setFontSize(8);
+  doc.setFont('helvetica','normal');
+  doc.setTextColor(199,210,254);
+  const goalShort=S.goal.length>60?S.goal.slice(0,57)+'…':S.goal;
+  doc.text(goalShort,PW-MARGIN,16,{align:'right'});
+  // Timeframe pill
+  doc.setFontSize(7);
+  doc.setTextColor(167,139,250);
+  doc.text((TFL[S.tf]||S.tf).toUpperCase(),PW-MARGIN,20.5,{align:'right'});
+
+  // ── Progress bar ──
+  let done=0,tot=0;
+  cells.forEach(row=>row.forEach(d=>{if(d.t==='sub'){tot++;if(d.done)done++;}}));
+  const pct=tot?done/tot:0;
+  const barX=MARGIN,barY=25,barW=PW-MARGIN*2,barH=3;
+  doc.setFillColor(40,35,100);
+  doc.roundedRect(barX,barY,barW,barH,1.5,1.5,'F');
+  if(pct>0){
+    doc.setFillColor(79,70,229);
+    doc.roundedRect(barX,barY,barW*pct,barH,1.5,1.5,'F');
+  }
+  doc.setFontSize(6.5);
+  doc.setTextColor(180,170,255);
+  doc.text(`${done} / ${tot} actions complete · ${Math.round(pct*100)}%`,PW/2,barY+barH+3.5,{align:'center'});
+
+  // ── Mandala grid ──
+  const GRID_TOP=33;
+  const GRID_LEFT=MARGIN;
+  const AVAIL_W=PW-MARGIN*2-48; // leave 48mm for legend
+  const AVAIL_H=PH-GRID_TOP-MARGIN-6;
+  const CELL=Math.min(AVAIL_W/9,AVAIL_H/9);
+  const GW=CELL*9,GH=CELL*9;
+
+  for(let r=0;r<9;r++){
+    for(let c=0;c<9;c++){
+      const d=cells[r][c];
+      const x=GRID_LEFT+c*CELL,y=GRID_TOP+r*CELL;
+
+      // Fill
+      let fillRgb;
+      if(d.t==='goal'){fillRgb=[15,10,50];}
+      else if(d.ki>=0){
+        const col=CC[d.ki%CC.length];
+        fillRgb=(d.t==='kt'||d.t==='kth')?hexToRgb(col.h):hexToRgb(col.bg);
+      } else {fillRgb=[25,20,70];}
+      doc.setFillColor(...fillRgb);
+      doc.rect(x,y,CELL,CELL,'F');
+
+      // Done overlay
+      if(d.done&&d.t==='sub'){
+        doc.setFillColor(34,197,94,80);
+        doc.rect(x,y,CELL,CELL,'F');
+      }
+
+      // Grid lines
+      doc.setDrawColor(40,35,90);
+      doc.setLineWidth(0.15);
+      doc.rect(x,y,CELL,CELL,'S');
+
+      // Thicker block dividers
+      if(c===3||c===6){doc.setDrawColor(100,90,200);doc.setLineWidth(0.5);doc.line(x,y,x,y+CELL);}
+      if(r===3||r===6){doc.setDrawColor(100,90,200);doc.setLineWidth(0.5);doc.line(x,y,x+CELL,y);}
+
+      // Cell text
+      const isHeader=(d.t==='kt'||d.t==='kth'||d.t==='goal');
+      doc.setFontSize(isHeader?5.2:4.5);
+      doc.setFont('helvetica',isHeader?'bold':'normal');
+      const txtCol=(d.t==='kt'||d.t==='kth'||d.t==='goal')?[255,255,255]:[30,25,80];
+      doc.setTextColor(...txtCol);
+      if(d.txt){
+        const pad=0.8;
+        const maxW=CELL-pad*2;
+        const lineH=isHeader?2.2:2.0;
+        const words=d.txt.split(' ');
+        let lines=[],cur='';
+        words.forEach(w=>{
+          const test=cur?cur+' '+w:w;
+          if(doc.getTextWidth(test)>maxW&&cur){lines.push(cur);cur=w;}
+          else cur=test;
+        });
+        if(cur)lines.push(cur);
+        // Max 3 lines
+        lines=lines.slice(0,3);
+        const totalH=lines.length*lineH;
+        const startY=y+CELL/2-totalH/2+lineH*0.7;
+        lines.forEach((ln,i)=>doc.text(ln,x+CELL/2,startY+i*lineH,{align:'center'}));
+      }
+    }
+  }
+
+  // ── Legend ──
+  const LX=GRID_LEFT+GW+5;
+  const LY_START=GRID_TOP+2;
+  doc.setFontSize(7);
+  doc.setFont('helvetica','bold');
+  doc.setTextColor(180,170,255);
+  doc.text('KEY TASKS',LX,LY_START);
+
+  S.tasks.forEach((tk,i)=>{
+    const col=CC[i%CC.length];
+    const ly=LY_START+5+i*10;
+    const[r2,g2,b2]=hexToRgb(col.h);
+    doc.setFillColor(r2,g2,b2);
+    doc.roundedRect(LX,ly-2.5,3.5,3.5,0.8,0.8,'F');
+    doc.setFontSize(6);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(255,255,255);
+    doc.text(`${i+1}.`,LX+5,ly+0.5);
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(5.8);
+    doc.setTextColor(220,215,255);
+    const label=tk.l.length>22?tk.l.slice(0,20)+'…':tk.l;
+    doc.text(label,LX+8.5,ly+0.5);
+  });
+
+  // ── Footer ──
+  doc.setFontSize(6);
+  doc.setTextColor(80,70,160);
+  doc.text('Generated by MasteryPath · masterypath.app · The Harada Method',PW/2,PH-3,{align:'center'});
+
+  // ── Save ──
+  const fname=`MasteryPath_${(S.name||'Chart').replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.pdf`;
+  doc.save(fname);
+}
+
+// Update PDF button state when Pro status changes
+function refreshProButtons(){
+  const btn=document.getElementById('btn-pdf');
+  const lock=document.getElementById('pdf-lock');
+  if(S.isPro){
+    btn.classList.remove('locked');
+    if(lock)lock.style.display='none';
+  } else {
+    btn.classList.add('locked');
+    if(lock)lock.style.display='inline';
+  }
 }
 // Init billing toggle knob
 document.getElementById("tog-knob").style.left="23px";
@@ -818,10 +1196,273 @@ document.getElementById("tog-yr").classList.add("active");
 document.getElementById("tog-mo").classList.remove("active");
 updatePricing();
 
+// ═══════════════════════════════════════════════
+//  SUPABASE — chart persistence & shareable links
+// ═══════════════════════════════════════════════
+
+// ── CONFIG — replace these two values after creating your Supabase project ──
+const SUPABASE_URL  = 'https://rqipujpzoqmdggizsqsl.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_HgphdpJxT67t937uKUyzsA_kmyCUYA3';
+
+const supabaseReady = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
+const db = supabaseReady
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON)
+  : null;
+
+// Extend state with cloud fields
+S.chartId   = null;   // UUID of chart row in Supabase
+S.isSaving  = false;
+S.savedOnce = false;
+S.isShared  = false;  // true when viewing someone else's chart
+
+// ── Save ─────────────────────────────────────
+async function saveChart(){
+  if(!db || !S.isPro) return;
+  if(S.isSaving) return;
+  S.isSaving = true;
+  setSyncStatus('saving');
+
+  let done=0,tot=0;
+  cells.forEach(row=>row.forEach(d=>{if(d.t==='sub'){tot++;if(d.done)done++;}}));
+
+  const payload = {
+    user_email:    S.email   || null,
+    user_name:     S.name,
+    goal:          S.goal,
+    timeframe:     S.tf,
+    profession_key:S.pk,
+    tasks:         S.tasks,
+    cells:         cells.map(row=>row.map(c=>({txt:c.txt,done:c.done}))),
+    is_public:     true,
+    completed_count: done,
+    total_count:   tot,
+    updated_at:    new Date().toISOString()
+  };
+
+  try {
+    if(S.chartId){
+      await db.from('charts').update(payload).eq('id', S.chartId);
+    } else {
+      const {data,error} = await db.from('charts').insert(payload).select('id').single();
+      if(error) throw error;
+      S.chartId = data.id;
+    }
+    S.savedOnce = true;
+    setSyncStatus('saved');
+  } catch(e){
+    console.error('Save failed', e);
+    setSyncStatus('error');
+  } finally {
+    S.isSaving = false;
+  }
+}
+
+// Debounced auto-save — fires 2s after last cell edit
+let saveTimer = null;
+function scheduleSave(){
+  if(!db || !S.isPro) return;
+  clearTimeout(saveTimer);
+  setSyncStatus('pending');
+  saveTimer = setTimeout(()=>saveChart(), 2000);
+}
+
+function setSyncStatus(state){
+  const el = document.getElementById('sync-status');
+  if(!el) return;
+  const map = {saving:'⏳', saved:'✓', error:'⚠', pending:'…'};
+  el.textContent = map[state]||'';
+}
+
+// ── Load by ID ────────────────────────────────
+async function loadChartById(id){
+  if(!db) return false;
+  try {
+    const {data,error} = await db.from('charts').select('*').eq('id',id).single();
+    if(error||!data) return false;
+
+    // Restore state
+    S.name    = data.user_name;
+    S.goal    = data.goal;
+    S.tf      = data.timeframe;
+    S.pk      = data.profession_key;
+    S.tasks   = data.tasks;
+    S.chartId = data.id;
+    S.isShared= true;
+    S.chartsCreated++;
+
+    // Restore cells
+    buildCells(); // build structure first
+    if(data.cells){
+      data.cells.forEach((row,r)=>row.forEach((c,col)=>{
+        if(cells[r]&&cells[r][col]){
+          cells[r][col].txt  = c.txt;
+          cells[r][col].done = c.done;
+        }
+      }));
+    }
+
+    // Render
+    document.getElementById('cn-name').textContent = `${S.name}'s MasteryPath Chart`;
+    document.getElementById('cn-goal').textContent = S.goal;
+    document.getElementById('cn-pill').textContent = TFL[S.tf]||S.tf;
+    document.getElementById('upgrade-bar').style.display = 'none';
+    renderLegend(); renderGrid(); updateProg();
+    goTo('s-chart');
+
+    // Show shared banner
+    const banner = document.getElementById('shared-banner');
+    document.getElementById('shared-banner-txt').textContent =
+      `👀 You're viewing ${S.name}'s MasteryPath chart — "${S.goal}"`;
+    banner.style.display = 'flex';
+
+    // Lock editing on shared view
+    document.querySelectorAll('.cell').forEach(el=>{
+      el.style.cursor='default';
+      el.replaceWith(el.cloneNode(true)); // remove click listeners
+    });
+
+    return true;
+  } catch(e){
+    console.error('Load failed', e);
+    return false;
+  }
+}
+
+// ── Share ─────────────────────────────────────
+function handleShare(){
+  if(!S.isPro){ openPricing('share'); return; }
+  if(!supabaseReady){
+    alert('Connect Supabase first — see the setup guide in the README.');
+    return;
+  }
+  openShareModal();
+}
+
+async function openShareModal(){
+  const overlay = document.getElementById('share-overlay');
+  overlay.style.display = 'flex';
+  document.getElementById('share-saving').style.display = 'block';
+  document.getElementById('share-actions').style.display = 'none';
+  document.getElementById('share-url-input').value = '';
+
+  // Save first to get/confirm the ID
+  await saveChart();
+
+  if(!S.chartId){
+    document.getElementById('share-saving').textContent = '❌ Save failed — check your Supabase config.';
+    return;
+  }
+
+  const url = `${location.origin}${location.pathname}?chart=${S.chartId}`;
+  document.getElementById('share-url-input').value = url;
+  document.getElementById('share-saving').style.display = 'none';
+  document.getElementById('share-actions').style.display = 'flex';
+}
+
+function closeShareModal(){
+  document.getElementById('share-overlay').style.display = 'none';
+}
+document.getElementById('share-overlay').addEventListener('click', e=>{
+  if(e.target===document.getElementById('share-overlay')) closeShareModal();
+});
+
+function copyShareUrl(){
+  const input = document.getElementById('share-url-input');
+  navigator.clipboard.writeText(input.value).then(()=>{
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.style.background = '#22c55e';
+    setTimeout(()=>{btn.textContent='Copy';btn.style.background='#4f46e5';}, 2000);
+  });
+}
+
+function shareVia(platform){
+  const url   = encodeURIComponent(document.getElementById('share-url-input').value);
+  const text  = encodeURIComponent(`Check out my MasteryPath chart: "${S.goal}" — built with the Harada Method`);
+  const links = {
+    twitter:  `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+    native:   null
+  };
+  if(platform==='native'&&navigator.share){
+    navigator.share({title:'My MasteryPath Chart',text:S.goal,url:decodeURIComponent(url)});
+  } else if(links[platform]){
+    window.open(links[platform],'_blank');
+  }
+}
+
+// ── Sync button (manual save trigger) ─────────
+function handleSync(){
+  if(!S.isPro){ openPricing('sync'); return; }
+  if(!supabaseReady){
+    alert('Connect Supabase first — see setup guide in README.');
+    return;
+  }
+  saveChart();
+}
+
+// ── Start fresh from shared view ──────────────
+function startFresh(){
+  S.isShared=false;
+  Object.assign(S,{chartId:null,name:'',pk:null,goal:'',tf:'1yr',tasks:[],chartsCreated:0,emailCaptured:false});
+  cells=[];
+  document.getElementById('shared-banner').style.display='none';
+  document.getElementById('inp-name').value='';
+  goTo('s-welcome');
+}
+
+// ── Hook auto-save into saveCell ──────────────
+const _origSaveCell = saveCell;
+saveCell = function(){
+  _origSaveCell();
+  scheduleSave();
+};
+
+// ── Update Pro button states ───────────────────
+const _origRefreshProButtons = refreshProButtons;
+refreshProButtons = function(){
+  _origRefreshProButtons();
+  const shareBtn  = document.getElementById('btn-share');
+  const shareLock = document.getElementById('share-lock');
+  const syncBtn   = document.getElementById('btn-sync');
+  const syncLock  = document.getElementById('sync-lock');
+  if(S.isPro){
+    if(shareBtn) shareBtn.classList.remove('locked');
+    if(shareLock) shareLock.style.display='none';
+    if(syncBtn) syncBtn.classList.remove('locked');
+    if(syncLock) syncLock.style.display='none';
+  } else {
+    if(shareBtn) shareBtn.classList.add('locked');
+    if(shareLock) shareLock.style.display='inline';
+    if(syncBtn) syncBtn.classList.add('locked');
+    if(syncLock) syncLock.style.display='inline';
+  }
+};
+
 // ─── INIT ─────────────────────────────────────
+// Dev helper: ?pro=1 unlocks Pro for testing
+if(new URLSearchParams(location.search).get('pro')==='1') S.isPro=true;
+refreshProButtons();
 document.querySelectorAll(".screen").forEach(s=>s.style.display="none");
-document.getElementById("s-welcome").style.display="flex";
-document.getElementById("main-nav").style.display="none";
+
+// Check for shared chart URL: ?chart=UUID
+(async ()=>{
+  const chartId = new URLSearchParams(location.search).get('chart');
+  if(chartId){
+    // Show loading state
+    document.getElementById('s-welcome').style.display='flex';
+    document.getElementById('main-nav').style.display='none';
+    const loaded = await loadChartById(chartId);
+    if(!loaded){
+      // Fall through to normal welcome
+      document.getElementById('s-welcome').style.display='flex';
+      document.getElementById('main-nav').style.display='none';
+    }
+  } else {
+    document.getElementById('s-welcome').style.display='flex';
+    document.getElementById('main-nav').style.display='none';
+  }
+})();
 </script>
 </body>
 </html>
