@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="google-adsense-account" content="ca-pub-5666528673778539"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5666528673778539" crossorigin="anonymous"></script>
 
 <!-- ═══════════════════════════════════════════
      PRIMARY SEO
@@ -310,6 +312,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 /* Coach CTA */
 .coach-cta{max-width:1100px;margin:20px auto 0;padding:0 24px;width:100%}
 .coach-banner{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ad-wrap{max-width:1100px;margin:16px auto;padding:0 24px;width:100%;text-align:center}
+.ad-wrap ins{border-radius:8px;overflow:hidden}
+.ad-label{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
 .cb-left h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px}
 .cb-left p{font-size:.82rem;color:rgba(255,255,255,.65)}
 .btn-coach{background:#fff;color:var(--indigo);border:none;border-radius:9px;padding:10px 20px;font-size:.84rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
@@ -484,6 +489,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
+<!-- AD: Placement B — between profession and goal screens, free users only -->
+<div class="ad-wrap" id="ad-b" style="display:none;padding:20px 24px">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5666528673778539" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
 <!-- ════════════════════ S3: GOAL ════════════════ -->
 <div class="screen" id="s-goal">
   <div class="ph">
@@ -577,6 +589,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <button class="btn-new" onclick="newChart()">+ New Chart</button>
   </div>
 
+  <!-- AD: Placement C — above upgrade bar, free users only -->
+  <div class="ad-wrap" id="ad-c" style="display:none">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5666528673778539" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
   <div class="upgrade-bar" id="upgrade-bar">
     <div class="ubar">
       <div class="ubar-txt">⚡ <strong>Upgrade to Pro</strong> — export to PDF, share with anyone, and sync progress across devices. <strong>14-day free trial.</strong></div>
@@ -591,6 +610,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="legend-wrap" id="legend-wrap"></div>
   <div class="grid-outer"><div class="mandala" id="mandala"></div></div>
   <p class="chart-hint">Click any cell to edit or mark complete · Colored bands = key tasks · Dark center = your main goal</p>
+
+  <!-- AD: Placement A — below chart grid, free users only -->
+  <div class="ad-wrap" id="ad-a" style="display:none">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5666528673778539" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
 
   <div class="coach-cta">
     <div class="coach-banner">
@@ -875,6 +901,7 @@ async function checkSubscriberStatus(email){
       S.isCoach = data.is_coach || false;
       S.plan    = data.plan || 'pro';
       refreshProButtons();
+      refreshAds();
       console.log(`✅ Pro subscriber detected: ${email} (${S.plan})`);
     }
   } catch(e){
@@ -1177,6 +1204,31 @@ function exportPDF(){
   const fname=`MasteryPath_${(S.name||'Chart').replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.pdf`;
   doc.save(fname);
 }
+
+// ── AdSense: show ads for free users only ────
+function refreshAds(){
+  const show = !S.isPro;
+  ['ad-a','ad-b','ad-c'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.style.display = show ? 'block' : 'none';
+  });
+}
+
+// Show placement B when navigating to goal screen
+const _origGotoGoal = gotoGoal;
+gotoGoal = function(){
+  _origGotoGoal();
+  refreshAds();
+  const adB = document.getElementById('ad-b');
+  if(adB && !S.isPro) adB.style.display = 'block';
+};
+
+// Show chart ads when chart is built
+const _origBuildChart_ads = buildChart;
+buildChart = function(){
+  _origBuildChart_ads();
+  refreshAds();
+};
 
 // Update PDF button state when Pro status changes
 function refreshProButtons(){
